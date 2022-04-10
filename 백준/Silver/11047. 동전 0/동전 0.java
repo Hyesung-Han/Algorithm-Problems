@@ -1,11 +1,10 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main{
 
 	static int N, K;
-	static int [] coin;
-	static int count;
+	static int result;
 	
 	public static void main(String[] args) throws Exception{
 
@@ -16,25 +15,27 @@ public class Main {
 		N = Integer.parseInt(token.nextToken());
 		K = Integer.parseInt(token.nextToken());
 		
-		coin = new int[N];
+		int [] coin = new int[N];
 		
-		for (int i = 0; i < N; i++) {
-			coin[N-1-i] = Integer.parseInt(br.readLine());
-		}//코인 배열에 내림차순으로 넣어놓기
-		
-		//해당 금액보다 큰 코인값이면 넘기고 작은 값이면 그 금액만큼 계속 빼주며 카운트 올리기
-		
-		int index = 0;
-		
-		while(K > 0) {
-			if(coin[index] <= K) {
-				count++;
-				K -= coin[index];
-			}else index++;
+		for(int i = 0; i < N; i++) {
+			coin[i] = Integer.parseInt(br.readLine());
 		}
 		
-		System.out.println(count);
+		int i = N-1;
 		
+		while(K > 0) {
+			
+			if(coin[i] <= K && coin[i] != 0) {
+				int count = K / coin[i];
+				K -= count * coin[i];
+				result += count;
+			}
+			
+			i--;
+
+		}
+		
+		System.out.println(result);
 	}
 
 }
