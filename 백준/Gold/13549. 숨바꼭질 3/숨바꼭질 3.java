@@ -19,7 +19,6 @@ public class Main{
 		
 		seek = new LinkedList<>();
 		visited = new boolean[Lim+1];
-//		seek.add(new Seek(0, N));
 		
 		find();
 		System.out.println(result);
@@ -31,11 +30,9 @@ public class Main{
 		
 		visited[N] = true;
 		que.add(new Seek(0, N));
-//		if(2*N<=Lim) {
-//			que.add(new Seek(0, 2*N));
-//		}
+
 		
-		here:while(!que.isEmpty()) {
+		while(!que.isEmpty()) {
 			
 			Seek s = que.poll();
 			
@@ -44,8 +41,7 @@ public class Main{
 			
 			if(place == K) {
 				result = time;
-//				System.out.println(result + " : result");
-				break here;
+				break;
 			}
 			
 			if(2*place<=Lim && !visited[2*place]) {
