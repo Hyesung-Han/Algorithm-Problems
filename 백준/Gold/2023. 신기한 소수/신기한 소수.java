@@ -17,9 +17,9 @@ public class Main{
 		count = 0;
 		Prime(count, 0);
 		
-		Collections.sort(result);
-		for(int res : result)
-			System.out.println(res);
+		//Collections.sort(result);
+		//for(int res : result)
+		//	System.out.println(res);
 		
 		
 		
@@ -28,6 +28,7 @@ public class Main{
 	private static void Prime(int cnt, int num) {
 		if(cnt == N) {
 			result.add(num);
+            System.out.println(num);
 			return;
 		}
 		
