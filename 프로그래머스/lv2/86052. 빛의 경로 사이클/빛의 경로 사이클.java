@@ -19,7 +19,7 @@ class Solution {
         int dr [] = {1,0,-1,0}; //아래 왼 위 오른
         int dc [] = {0,-1,0,1};
         
-        List<Integer> countList = new ArrayList<Integer>();
+         ArrayList<Integer> countList = new ArrayList<Integer>();
         
         //모든 방향에 따른 빛 다 넣어보기
         for(int i = 0; i < M; i++){
