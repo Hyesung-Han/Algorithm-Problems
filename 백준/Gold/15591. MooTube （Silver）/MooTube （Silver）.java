@@ -53,8 +53,8 @@ public class Main{
 					if(end == start) continue;
 					if(num >= K && !visited[end]) {
 						answer++;
-						que.add(end);
 						visited[end] = true;
+                        que.add(end);
 					}
 				}
 			}
