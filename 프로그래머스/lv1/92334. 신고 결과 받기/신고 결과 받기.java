@@ -1,8 +1,7 @@
 import java.util.*;
-import java.io.*;
 
 class Solution {
-    public int[] solution(String[] id_list, String[] report, int k) throws IOException{
+    public int[] solution(String[] id_list, String[] report, int k){
         //유저만큼의 bool 배열 만든 후 
         //신고자와 신고당한자 의 배열값에 true로 변경 -> 동일한 유저 여러번 신고 무시 가능
         //신고당한 유저의 true값들의 카운트가 k이상이면 신고처리됨
