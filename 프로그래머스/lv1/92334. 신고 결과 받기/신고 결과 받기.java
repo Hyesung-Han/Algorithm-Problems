@@ -7,10 +7,9 @@ class Solution {
         //신고당한 유저의 true값들의 카운트가 k이상이면 신고처리됨
         //해당 유저 신고한 사람들의 카운트 올려서 answer에 넣어주기
         
-        int len = id_list.length;
-        boolean [][] rep = new boolean[len][len];
+        boolean [][] rep = new boolean[id_list.length][id_list.length];
         
-        int[] answer = new int[len];
+        int[] answer = new int[id_list.length];
         
         StringTokenizer token = null;
         
@@ -19,7 +18,7 @@ class Solution {
             String start = token.nextToken();
             String end = token.nextToken();
             int s = 0, e = 0;
-            for(int j = 0; j < len; j++){
+            for(int j = 0; j < id_list.length; j++){
                 if(id_list[j].equals(start))
                     s = j;
                 if(id_list[j].equals(end))
@@ -28,10 +27,10 @@ class Solution {
             rep[s][e] = true;
         }//신고 내역 true 처리완료
         
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < id_list.length; i++){
             int count = 0;
-            int people [] = new int[len];
-            for(int j = 0; j < len; j++){
+            int people [] = new int[id_list.length];
+            for(int j = 0; j < id_list.length; j++){
                 if(rep[j][i]){
                     //신고 되어있는 유저의 카운트 올리고 해당 유저를 신고한 사람을 배열에 넣기
                     count++;
@@ -39,7 +38,7 @@ class Solution {
                 }
             }
             if(count >= k){//k번 이상 신고되었으면 해당 유저 신고한 사람들의 카운트 올리기
-                for(int j = 0; j < len; j++){
+                for(int j = 0; j < id_list.length; j++){
                     if(people[j] == 1){
                         answer[j]++;
                     }
