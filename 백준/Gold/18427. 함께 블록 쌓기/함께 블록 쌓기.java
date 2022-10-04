@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 
@@ -44,16 +43,10 @@ public class Main{
 					int h = j - block[i].get(a);
 					if(dp[i-1][h] > 0)
 						dp[i][j] += dp[i-1][h];
-					dp[i][j] %= 10007;
 				}
 				dp[i][j] %= 10007;
 			}
 		}
-//		for(int i = 1; i <= N; i++) {
-//			for(int j = 0; j <= H; j++) {
-//				System.out.print(dp[i][j] + " ");
-//			}System.out.println();
-//		}
 		bw.write(String.valueOf(dp[N][H]));
 		bw.flush();
 		bw.close();
