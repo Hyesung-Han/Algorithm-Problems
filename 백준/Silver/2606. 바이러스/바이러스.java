@@ -3,74 +3,59 @@ import java.util.*;
 
 public class Main{
 
-	static int N; //컴퓨터 1~N 번까지 있음
-	static int K; 
-	static LinkedList<Line> line;
-	static int result;
-	
-	public static void main(String[] args) throws Exception{
+	static int N;
+	static int K;
+	static int answer;
+	static boolean [] visited;
+	static ArrayList<int []> virus;
+	public static void main(String[] args) throws IOException{
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		N = Integer.parseInt(br.readLine());
 		K = Integer.parseInt(br.readLine());
-		
-		line = new LinkedList<>();
-		
+
 		StringTokenizer token = null;
+		visited = new boolean[N+1];
+		virus = new ArrayList<>();
 		
-		for (int i = 0; i < K; i++) {
+		for(int k = 0; k < K; k++) {
 			token = new StringTokenizer(br.readLine());
 			int start = Integer.parseInt(token.nextToken());
 			int end = Integer.parseInt(token.nextToken());
-			line.add(new Line(start, end));
+
+			virus.add(new int[] {start, end});
 		}
 		
 		bfs();
 		
-		System.out.println(result);
+		bw.write(String.valueOf(answer));
+		bw.close();
 	}
-
+	
 	private static void bfs() {
 		
-		boolean [] visited = new boolean [N+1];
-		Queue<Integer> que = new LinkedList<Integer>();
-		que.add(1);
-//		visited[0] = true;
-//		for (int i = 0; i < K; i++) {
-//			if(line.get(i).start == 1 && !visited[line.get(i).end]) {
-//				que.add(line.get(i).end);
-//			}
-//		}
-		
+		Queue<Integer> que = new LinkedList<>();
+		que.offer(1);
+		visited[1] = true;
+		answer = -1;
 		while(!que.isEmpty()) {
-		
-			int start = que.poll();
-			visited[start] = true;
+			answer++;
+			int q = que.poll();
 			
-			for (int i = 0; i < K; i++) {
-				if(line.get(i).start == start && !visited[line.get(i).end]) {
-					visited[line.get(i).end] = true;
-					que.add(line.get(i).end);
+			for(int i = 0; i < virus.size(); i++) {
+				if(virus.get(i)[0] == q && !visited[virus.get(i)[1]]) {
+					visited[virus.get(i)[1]] = true;
+					que.offer(virus.get(i)[1]);
 				}
-				if(line.get(i).end == start && !visited[line.get(i).start]) {
-					visited[line.get(i).start] = true;
-					que.add(line.get(i).start);
+				else if(virus.get(i)[1] == q && !visited[virus.get(i)[0]]) {
+					visited[virus.get(i)[0]] = true;
+					que.offer(virus.get(i)[0]);
 				}
 			}
+			
 		}
-		for (int i = 2; i < N+1; i++) {
-			if(visited[i]) result++;
-		}
-	}
-
-}
-class Line{
-	int start;
-	int end;
-	public Line(int start, int end) {
-		super();
-		this.start = start;
-		this.end = end;
+		
 	}
 }
