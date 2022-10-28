@@ -1,46 +1,35 @@
 import java.io.*;
 import java.util.*;
 
-public class Main{
+public class Main {
 
 	static int N;
+	static long answer;
 	
 	public static void main(String[] args) throws IOException{
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		N = Integer.parseInt(br.readLine());
-		PriorityQueue<Integer> que = new PriorityQueue<>();
-		for(int i = 0; i < N; i++) {
-			que.add(Integer.parseInt(br.readLine()));
+		
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		for(int n = 0; n < N; n++) 
+			pq.offer(Integer.parseInt(br.readLine()));
+		
+		answer = 0;
+		
+		while(pq.size()>1) {
+			int num1 = pq.poll();
+			int num2 = pq.poll();
+			if(pq.size()>0)
+				pq.offer(num1 + num2);
+			answer+= num1+num2;
 		}
 		
-		int answer = 0;
-        //카드 한 뭉치일 경우 
-		if(que.size() == 1) {
-			System.out.println(0);
-			return;
-		}
-		while(!que.isEmpty()) {
-			if(que.size()==1) {
-				answer= que.poll();
-				break;
-				
-			}else if(que.size()==2) {
-				int a = que.poll();
-				int b = que.poll();
-				answer += a+b;
-			}else {
-				
-				//두개씩 뽑아서 더하기
-				int a = que.poll();
-				int b = que.poll();
-				answer += a+b;
-				que.add(a+b);
-			}
-			
-		}
-		System.out.println(answer);
+		bw.write(String.valueOf(answer));
+		bw.close();
+		
 	}
 
 }
