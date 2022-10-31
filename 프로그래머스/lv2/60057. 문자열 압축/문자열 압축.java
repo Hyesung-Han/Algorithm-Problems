@@ -7,7 +7,6 @@ class Solution {
             return 1;
         }
         
-        
         for(int i = 1; i <= s.length()/2; i++){  
             int cnt = 0;
             //시작 문자열 잘라
@@ -43,11 +42,9 @@ class Solution {
             if(cnt > 1)
                 sub += cnt;
             sub += str; 
-            // System.out.println(sub);
             answer = Math.min(answer, sub.length());
             
         }
-        
         
         return answer;
     }
