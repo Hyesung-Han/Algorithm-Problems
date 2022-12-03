@@ -1,11 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main{
 
 	static int T;
-	static String answer;
 	static String str;
+	static String answer;
+	static boolean check;
 	
 	public static void main(String[] args) throws IOException{
 
@@ -13,38 +14,42 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		T = Integer.parseInt(br.readLine());
-		for(int t = 0; t < T; t++) {
-			answer = "YES";
+		for(int t = 1; t <= T; t++) {
 			str = br.readLine();
-			dc(str.length()/2, str.length()/2);
+			int N = str.length();
+			check = true;
+			answer = "YES";
+			
+			dfs(0,N-1, N); // 시작, 끝, 총 길이
+				
+			if(!check) answer = "NO";
 			
 			bw.write(answer+"\n");
 		}
 		bw.close();
 		
+		
+		
 	}
 
-	private static void dc(int size, int m) {
+	private static void dfs(int s, int e, int size) {
 
-		if(size == 0) return;
-		
-		int len = 1;
-		boolean check = false;
-		while(len <= size) {
-			if(str.charAt(m - len) == str.charAt(m + len)) {
-				check = true;
+		if(size == 1) return;
+		int m = (s + e) / 2;
+		int a = s;
+		int b = e;
+		while(a < b) {
+			if(str.charAt(a) == str.charAt(b)) {
+				check = false;
 				break;
 			}
-			len++;
+			a++;
+			b--;
 		}
-		if(check) {
-			answer = "NO";
-			return;
-		}
-		else if(!check && answer.equals("YES")){
-			dc(size/2, m-1-size/2);
-			dc(size/2, m+1+size/2);
-		}
+		if(!check) return;
+		dfs(s, m-1, size/2);
+		dfs(m+1, e, size/2);
+		
 	}
 
 }

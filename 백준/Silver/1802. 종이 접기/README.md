@@ -4,11 +4,11 @@
 
 ### 성능 요약
 
-메모리: 12544 KB, 시간: 84 ms
+메모리: 12100 KB, 시간: 80 ms
 
 ### 분류
 
-애드 혹(ad_hoc), 분할 정복(divide_and_conquer), 문자열(string)
+애드 혹(ad_hoc), 분할 정복(divide_and_conquer)
 
 ### 문제 설명
 
