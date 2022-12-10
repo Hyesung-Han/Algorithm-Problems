@@ -1,22 +1,27 @@
 import java.util.*;
+import java.io.*;
 
 class Solution {
+    static int answer;
+    static HashSet<String> clothesName;
+    static HashMap<String, Integer> clothesType;
+    
     public int solution(String[][] clothes) {
-        int answer = 1;
-        
-        HashMap<String, Integer> spy = new HashMap<>();
-        //의상 종류별로 (count1+1) * (count2+1) * (count3+1)... -1 하면 끝
 
+        clothesName = new HashSet<>();
+        clothesType = new HashMap<>();
+        
         for(int i = 0; i < clothes.length; i++){
-            String clo = clothes[i][1];
-            if(spy.containsKey(clo)){
-                spy.put(clo, spy.get(clo)+1);
-            }else{
-                spy.put(clo, 1);
-            }
+            String Name = clothes[i][0];
+            String Type = clothes[i][1];
+            
+            if(clothesName.contains(Name)) continue;
+            clothesName.add(Name);
+            clothesType.put(Type, clothesType.getOrDefault(Type, 0) +1);
         }
-        for(int count : spy.values()){
-            answer *= (count+1);
+        answer = 1;
+        for(String key : clothesType.keySet()){
+            answer *= clothesType.get(key)+1;
         }
         
         return answer-1;
