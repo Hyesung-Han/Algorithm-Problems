@@ -22,7 +22,7 @@ class Solution {
                     que.poll();
                 
                 else{
-                    PriorityQueue<Integer> newQue = new PriorityQueue<>();
+                    Queue<Integer> newQue = new LinkedList<>();
                     int size = que.size()-1;
                     for(int j = 0; j < size; j++){
                         newQue.add(que.poll());
