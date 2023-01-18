@@ -21,7 +21,7 @@ class Solution {
         
         ArrayList<Integer> list = new ArrayList<>();
         
-        for(int i = 0, a =0; i < 3; i++){
+        for(int i = 0; i < 3; i++){
             if(result == spjPoint[i])
                 list.add(i+1);
         }
