@@ -1,6 +1,3 @@
-import java.util.*;
-//백준 상근이의 여행과 비슷한 문제
-
 class Solution {
     
     static int answer;
@@ -11,21 +8,19 @@ class Solution {
         N = n;
         visited = new boolean[n];
 
+        //방문하지 않았던 컴퓨터면 answer올리고 dfs 돌리기
         for(int i = 0; i < n; i++){
             if(!visited[i]){
                 answer++;
                 dfs(i, answer, computers);
             }
         }
-        //dfs돌려서 1번 컴퓨터부터 가보고 다른 곳 연결되어 있으면 큐에 넣기
-        // dfs();
         
         return answer;
     }
     private void dfs(int s, int ans, int [][] map){
-        
+        //하나씩 다 돌면서 노선이 연결되어있고 방문하지 않은 컴퓨터가 있으면 dfs 넣기
         for(int i = 0; i < N; i++){
-            
             if(map[i][s] == 1 && !visited[i]){
                 visited[i] = true;
                 dfs(i, ans, map);            
