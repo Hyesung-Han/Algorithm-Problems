@@ -3,9 +3,8 @@ import java.util.*;
 
 class Solution {
     
-    public int[] solution(int[] answers) throws IOException{
-        
-        int [] spj1 = {1,2,3,4,5};
+    public int[] solution(int[] answers){
+       int [] spj1 = {1,2,3,4,5};
         int [] spj2 = {2,1,2,3,2,4,2,5};
         int [] spj3 = {3,3,1,1,2,2,4,4,5,5};
         
