@@ -15,11 +15,7 @@ class Solution {
         
         //0은 벽, 1은 길
         //시작점 0,0 -> n-1,m-1
-        
-        
-//         if(maps[n-2][m-1] == 0 && maps[n-1][m-2] == 0)
-//             return -1;
-        
+               
         Queue<Game> que = new LinkedList<>();
         
         que.add(new Game(0,0,1));
